@@ -15,18 +15,43 @@ input, select, textarea, button { padding: 0.8rem; font-size: 1rem; }
 button { background: #333; color: white; border: none; cursor: pointer; }
 button:hover { background: #555; }
 
-.nosotros {
+.nosotros.mejorada {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
   padding: 2rem;
-  background: #f1f1f1;
-  text-align: center;
+  background: #f9f9f9;
 }
-.nosotros h2 {
-  font-size: 2rem;
+.nosotros.mejorada .contenido {
+  flex: 1;
+  min-width: 300px;
+  padding: 1rem;
+  max-width: 600px;
+}
+.nosotros.mejorada h2 {
+  font-size: 2.5rem;
+  color: #0a3a61;
+  margin-bottom: 0.5rem;
+}
+.nosotros.mejorada h3 {
+  font-size: 1.5rem;
+  color: #444;
   margin-bottom: 1rem;
 }
-.nosotros p {
-  max-width: 800px;
-  margin: 0 auto 1rem;
+.nosotros.mejorada p {
   font-size: 1.1rem;
   line-height: 1.6;
+  margin-bottom: 1rem;
 }
+.nosotros.mejorada .imagen {
+  flex: 1;
+  min-width: 300px;
+  padding: 1rem;
+}
+.nosotros.mejorada .imagen img {
+  width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
