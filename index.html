@@ -1,0 +1,77 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ProTec Cortinas | Productos</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>ProTec Cortinas</h1>
+    <nav>
+      <a href="#">Inicio</a>
+      <a href="#">Nosotros</a>
+      <a href="#">Productos</a>
+      <a href="#">Contacto</a>
+    </nav>
+  </header>
+
+  <section class="productos">
+    <h2>Nuestros Productos</h2>
+    <div class="grid">
+      <div class="producto">
+        <img src="img/plana.jpg" alt="Cortina Plana" />
+        <h3>Plana</h3>
+        <a href="#">Cotizar</a>
+      </div>
+      <div class="producto">
+        <img src="img/microperforada.jpg" alt="Cortina Microperforada" />
+        <h3>Microperforada</h3>
+        <a href="#">Cotizar</a>
+      </div>
+      <div class="producto">
+        <img src="img/motorizada.jpg" alt="Cortina Motorizada" />
+        <h3>Motorizada</h3>
+        <a href="#">Cotizar</a>
+      </div>
+      <div class="producto">
+        <img src="img/policarbonato.jpg" alt="Cortina de Policarbonato" />
+        <h3>Policarbonato</h3>
+        <a href="#">Cotizar</a>
+      </div>
+      <div class="producto">
+        <img src="img/altaseguridad.jpg" alt="Cortina Alta Seguridad" />
+        <h3>Alta Seguridad</h3>
+        <a href="#">Cotizar</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="cotiza">
+    <h2>Solicita tu cotización</h2>
+    <form action="https://formsubmit.co/proteccortinas@gmail.com" method="POST">
+      <input type="text" name="nombre" placeholder="Tu nombre" required />
+      <input type="tel" name="telefono" placeholder="Teléfono de contacto" required />
+      <select name="tipo_cortina" required>
+        <option value="">Tipo de cortina</option>
+        <option value="Plana">Plana</option>
+        <option value="Microperforada">Microperforada</option>
+        <option value="Motorizada">Motorizada</option>
+        <option value="Policarbonato">Policarbonato</option>
+        <option value="Alta Seguridad">Alta Seguridad</option>
+      </select>
+      <textarea name="comentarios" placeholder="Comentarios o medidas" rows="4"></textarea>
+      <button type="submit">Enviar cotización</button>
+    </form>
+  </section>
+
+  <footer>
+    <p>Contacto: proteccortinas@gmail.com | Tel: 5611995423 / 5579402427</p>
+    <p>Ubicación: Cto. Cuauhtémoc #19, Estado de México</p>
+  </footer>
+
+  <a href="https://wa.me/5215511144437" class="whatsapp" target="_blank">💬</a>
+</body>
+</html>
