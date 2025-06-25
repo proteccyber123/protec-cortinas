@@ -16,42 +16,48 @@ button { background: #333; color: white; border: none; cursor: pointer; }
 button:hover { background: #555; }
 
 
-.nosotros.mejorada {
+.nosotros {
+  padding: 40px 20px;
+  background-color: #f9f9f9;
+}
+
+.nosotros-contenido {
   display: flex;
-  flex-wrap: wrap;
   align-items: center;
-  justify-content: center;
-  padding: 2rem;
-  background: #f9f9f9;
+  justify-content: space-between;
+  gap: 40px;
+  flex-wrap: wrap;
 }
-.nosotros.mejorada .contenido {
-  flex: 1;
-  min-width: 300px;
-  padding: 1rem;
-  max-width: 600px;
+
+.texto-nosotros {
+  flex: 1 1 400px;
+  text-align: left;
 }
-.nosotros.mejorada h2 {
-  font-size: 2.5rem;
-  color: #0a3a61;
-  margin-bottom: 0.5rem;
+
+.texto-nosotros h2 {
+  font-size: 2em;
+  margin-bottom: 10px;
 }
-.nosotros.mejorada h3 {
-  font-size: 1.5rem;
-  color: #444;
-  margin-bottom: 1rem;
+
+.texto-nosotros h3 {
+  font-size: 1.2em;
+  color: #555;
+  margin-bottom: 20px;
 }
-.nosotros.mejorada p {
-  font-size: 1.1rem;
+
+.texto-nosotros p {
+  font-size: 1em;
+  color: #333;
   line-height: 1.6;
-  margin-bottom: 1rem;
 }
-.nosotros.mejorada .imagen {
-  flex: 1;
-  min-width: 300px;
-  padding: 1rem;
+
+.imagen-nosotros {
+  flex: 1 1 400px;
+  text-align: center;
 }
-.nosotros.mejorada .imagen img {
+
+.imagen-nosotros img {
   width: 100%;
-  border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  max-width: 500px;
+  border-radius: 10px;
 }
