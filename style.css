@@ -14,3 +14,19 @@ form { max-width: 500px; margin: auto; display: flex; flex-direction: column; ga
 input, select, textarea, button { padding: 0.8rem; font-size: 1rem; }
 button { background: #333; color: white; border: none; cursor: pointer; }
 button:hover { background: #555; }
+
+.nosotros {
+  padding: 2rem;
+  background: #f1f1f1;
+  text-align: center;
+}
+.nosotros h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+.nosotros p {
+  max-width: 800px;
+  margin: 0 auto 1rem;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
