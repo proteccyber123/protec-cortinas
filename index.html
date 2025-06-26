@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+    $(document).ready(function(){
+        $('.producto').addClass('animate__animated');
+        $(window).on('scroll', function(){
+            $('.producto').each(function(){
+                if ($(this).offset().top < $(window).scrollTop() + $(window).height() - 100) {
+                    $(this).addClass('animate__fadeInUp');
+                }
+            });
+        });
+        $('nav a[href^="#"]').click(function(e){
+            e.preventDefault();
+            $('html, body').animate({
+                scrollTop: $($(this).attr('href')).offset().top - 50
+            }, 600);
+        });
+    });
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ProTec Cortinas</title>
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="img/logo.png" alt="ProTec Cortinas" />
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#nosotros">Nosotros</a></li>
+                <li><a href="#productos">Productos</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+                <li><a href="https://wa.me/5215511144437" target="_blank">WhatsApp</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section id="inicio">
+        <h1>Bienvenidos a ProTec Cortinas</h1>
+        <p>Expertos en cortinas metálicas, motores y soluciones de alta seguridad.</p>
+    </section>
+    <section id="nosotros">
+        <h2>Nosotros</h2>
+        <p>Somos una empresa mexicana con amplia experiencia en la fabricación, instalación y mantenimiento de cortinas metálicas. Atendemos todo el Estado de México y zonas cercanas.</p>
+    </section>
+    <section id="productos">
+        <h2>Nuestros Productos</h2>
+        <div class="productos-grid">
+            <div class="producto"><h3>Plana</h3><p>Seguridad estándar para uso comercial.</p></div>
+            <div class="producto"><h3>Microperforada</h3><p>Visibilidad y ventilación controlada.</p></div>
+            <div class="producto"><h3>Motores</h3><p>Automatiza tus cortinas con tecnología de calidad.</p></div>
+            <div class="producto"><h3>Policarbonato</h3><p>Alta estética con resistencia.</p></div>
+            <div class="producto"><h3>Alta Seguridad</h3><p>Máxima protección para negocios.</p></div>
+            <div class="producto"><h3>Tipo Europeas</h3><p>Diseño moderno y compacto.</p></div>
+            <div class="producto"><h3>Enrollables</h3><p>Prácticas y funcionales en cualquier espacio.</p></div>
+            <div class="producto"><h3>Translúcidas</h3><p>Permiten entrada de luz sin perder seguridad.</p></div>
+            <div class="producto"><h3>Servicio Técnico</h3><p>Reparación y mantenimiento profesional.</p></div>
+        </div>
+    </section>
+    <section id="contacto">
+        <h2>Contáctanos</h2>
+        <form action="mailto:proteccortinas@gmail.com" method="POST" enctype="text/plain">
+            <input type="text" name="nombre" placeholder="Tu nombre" required><br>
+            <input type="email" name="email" placeholder="Tu correo" required><br>
+            <textarea name="mensaje" placeholder="Escríbenos tu mensaje" required></textarea><br>
+            <button type="submit">Enviar</button>
+        </form>
+        <p>Teléfonos: 5611995423 / 5579402427</p>
+        <p>Correo: proteccortinas@gmail.com</p>
+        <p>Dirección: Cto. Cuauhtémoc #19, Estado de México</p>
+    </section>
+    <footer>
+        <p>© 2025 ProTec Cortinas - Todos los derechos reservados</p>
+    </footer>
+</body>
+</html>
