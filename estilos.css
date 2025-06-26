@@ -14,8 +14,12 @@ header {
     align-items: center;
     justify-content: space-between;
 }
-.logo img {
-    height: 35px;
+.logo {
+  width: 120px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
 }
 nav ul {
     list-style: none;
