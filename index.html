@@ -1,80 +1,46 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ProTec Cortinas | Productos</title>
-  <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8">
+    <title>ProTec Cortinas</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="estilos.css">
 </head>
 <body>
-  <header>
-    <h1>ProTec Cortinas</h1>
-    <nav>
-      <a href="#">Inicio</a>
-      <a href="#">Nosotros</a>
-      <a href="#">Productos</a>
-      <a href="#">Contacto</a>
-    </nav>
-  </header>
-
-
-  <section class="nosotros">
-  <div class="nosotros-contenido">
-    <div class="texto-nosotros">
-      <h2>ProTec Cortinas</h2>
-      <h3>Expertos en Protección y Estilo</h3>
-      <p>
-        Somos una empresa mexicana dedicada a brindar soluciones en cortinas metálicas con enfoque en seguridad, innovación y diseño. Nos apasiona proteger tu inversión y darle presencia a tu propiedad.
-      </p>
-      <p>
-        Nuestra experiencia, compromiso y atención personalizada nos convierten en tu mejor opción para transformar tus espacios con fuerza, calidad y confianza.
-      </p>
-    </div>
-    <div class="imagen-nosotros">
-      <img src="img/instalacion.jpg" alt="Instalación de cortinas ProTec">
-    </div>
-  </div>
-</section>
-
-
-<section class="productos">
-  <h2>Nuestros Productos</h2>
-  <div class="grid">
-    <div class="producto"><img src="img/plana.jpg" alt="Cortina Plana" /><h3>Plana</h3><a href="#">Cotizar</a></div>
-    <div class="producto"><img src="img/microperforada.jpg" alt="Cortina Microperforada" /><h3>Microperforada</h3><a href="#">Cotizar</a></div>
-    <div class="producto"><img src="img/motorizada.jpg" alt="Cortina Motorizada" /><h3>Motorizada</h3><a href="#">Cotizar</a></div>
-    <div class="producto"><img src="img/policarbonato.jpg" alt="Cortina de Policarbonato" /><h3>Policarbonato</h3><a href="#">Cotizar</a></div>
-    <div class="producto"><img src="img/altaseguridad.jpg" alt="Cortina Alta Seguridad" /><h3>Alta Seguridad</h3><a href="#">Cotizar</a></div>
-    <div class="producto"><img src="img/anticiclonica.jpg" alt="Cortina Anticiclónica" /><h3>Anticiclónica</h3><a href="#">Cotizar</a></div>
-    <div class="producto"><img src="img/residencial.jpg" alt="Cortina Residencial" /><h3>Residencial</h3><a href="#">Cotizar</a></div>
-    <div class="producto"><img src="img/aluminio.jpg" alt="Cortina de Aluminio" /><h3>Aluminio</h3><a href="#">Cotizar</a></div>
-  </div>
-</section>
-
-  <section class="cotiza">
-    <h2>Solicita tu cotización</h2>
-    <form action="https://formsubmit.co/proteccortinas@gmail.com" method="POST">
-      <input type="text" name="nombre" placeholder="Tu nombre" required />
-      <input type="tel" name="telefono" placeholder="Teléfono de contacto" required />
-      <select name="tipo_cortina" required>
-        <option value="">Tipo de cortina</option>
-        <option value="Plana">Plana</option>
-        <option value="Microperforada">Microperforada</option>
-        <option value="Motorizada">Motorizada</option>
-        <option value="Policarbonato">Policarbonato</option>
-        <option value="Alta Seguridad">Alta Seguridad</option>
-      </select>
-      <textarea name="comentarios" placeholder="Comentarios o medidas" rows="4"></textarea>
-      <button type="submit">Enviar cotización</button>
-    </form>
-  </section>
-
-  <footer>
-    <p>Contacto: proteccortinas@gmail.com | Tel: 5611995423 / 5579402427</p>
-    <p>Ubicación: Cto. Cuauhtémoc #19, Estado de México</p>
-  </footer>
-
-  <a href="https://wa.me/5215511144437" class="whatsapp" target="_blank">💬</a>
+    <header>
+        <h1>ProTec Cortinas</h1>
+        <nav>
+            <a href="#inicio">Inicio</a>
+            <a href="#productos">Nuestros Productos</a>
+            <a href="#cotizacion">Cotiza</a>
+            <a href="https://wa.me/5215511144437" target="_blank">WhatsApp</a>
+        </nav>
+    </header>
+    <section id="inicio">
+        <h2>Bienvenido a ProTec Cortinas</h2>
+        <p>Especialistas en cortinas metálicas, automatización y seguridad.</p>
+    </section>
+    <section id="productos">
+        <h2>Nuestros Productos</h2>
+        <ul>
+            <li><strong>Plana:</strong> Cortina metálica de uso general, resistente y duradera.</li>
+            <li><strong>Microperforada:</strong> Ideal para mostrar productos sin comprometer la seguridad.</li>
+            <li><strong>Motores:</strong> Motores eléctricos de alto rendimiento para automatización.</li>
+            <li><strong>Policarbonato:</strong> Transparencia y resistencia para aplicaciones estéticas.</li>
+            <li><strong>Alta Seguridad:</strong> Cortinas reforzadas para máxima protección.</li>
+        </ul>
+    </section>
+    <section id="cotizacion">
+        <h2>Solicita tu cotización</h2>
+        <form action="mailto:proteccortinas@gmail.com" method="POST" enctype="text/plain">
+            <input type="text" name="nombre" placeholder="Tu nombre" required><br>
+            <input type="email" name="email" placeholder="Tu correo" required><br>
+            <textarea name="mensaje" placeholder="Cuéntanos qué necesitas..." required></textarea><br>
+            <button type="submit">Enviar</button>
+        </form>
+    </section>
+    <footer>
+        <p>© 2025 ProTec Cortinas - Todos los derechos reservados</p>
+    </footer>
 </body>
 </html>
