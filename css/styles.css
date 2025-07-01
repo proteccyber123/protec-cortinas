@@ -22,9 +22,7 @@ header {
     color: white;
 }
 .logo {
-    height: auto;
-    max-height: 120px;
-    width: auto;
+    height: 120px;
 }
 
 nav ul {
