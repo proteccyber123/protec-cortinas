@@ -23,7 +23,7 @@ header {
 }
 
 .logo {
-    height: 50px;
+    height: 90px; /* o hasta 120px si lo quieres muy visible */
 }
 
 nav ul {
