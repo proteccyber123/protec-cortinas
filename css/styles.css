@@ -21,9 +21,10 @@ header {
     justify-content: space-between;
     color: white;
 }
-
 .logo {
-    height: 90px; /* o hasta 120px si lo quieres muy visible */
+    height: auto;
+    max-height: 120px;
+    width: auto;
 }
 
 nav ul {
