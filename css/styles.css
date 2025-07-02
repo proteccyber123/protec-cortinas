@@ -55,6 +55,9 @@ ul {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .btn {
@@ -91,36 +94,7 @@ ul {
     box-shadow: var(--shadow);
 }
 
-.section-header {
-    text-align: center;
-    margin-bottom: 3rem;
-}
-
-.section-header h2 {
-    font-size: 2.5rem;
-    position: relative;
-    display: inline-block;
-    padding-bottom: 10px;
-}
-
-.section-header h2::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 80px;
-    height: 3px;
-    background-color: var(--accent-color);
-}
-
-.section-header p {
-    color: var(--text-light);
-    font-size: 1.1rem;
-}
-
 /* Header */
-/* Header Styles */
 header {
     position: fixed;
     width: 100%;
@@ -130,16 +104,6 @@ header {
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     transition: var(--transition);
     padding: 15px 0;
-}
-
-.contenedor {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
 }
 
 .logo-container {
@@ -170,11 +134,13 @@ header {
     color: rgba(255, 255, 255, 0.7);
 }
 
+nav {
+    display: flex;
+}
+
 nav ul {
     display: flex;
     gap: 25px;
-    margin: 0;
-    padding: 0;
 }
 
 nav ul li a {
@@ -204,8 +170,18 @@ nav ul li a:hover {
     color: var(--accent-color);
 }
 
+.mobile-menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--white);
+    font-size: 1.8rem;
+    cursor: pointer;
+    padding: 10px;
+    z-index: 1001;
+}
 
-/* Estilos para el menú móvil */
+/* Responsive - Móvil */
 @media (max-width: 768px) {
     nav {
         position: fixed;
@@ -226,71 +202,23 @@ nav ul li a:hover {
         left: 0;
     }
 
-    .mobile-menu-btn {
-        display: block;
-    }
-}
-    
-    /* Estilo general nav - desktop */
-nav {
-    display: flex;
-    position: static;
-    width: auto;
-    height: auto;
-    background: none;
-    box-shadow: none;
-    justify-content: flex-end;
-    gap: 25px;
-}
-    
-    nav.active {
-        left: 0;
-    }
-    
-    nav ul {
-        flex-direction: column;
-        padding: 20px;
-    }
-    
-    nav ul li {
-        margin-bottom: 15px;
-    }
-}
-
-/* Responsive Styles */
-@media (max-width: 768px) {
-    nav {
-        position: fixed;
-        top: 80px;
-        left: -100%;
-        width: 100%;
-        background-color: var(--primary-color);
-        padding: 20px 0;
-        transition: var(--transition);
-        z-index: 999;
-    }
-    
-    nav.active {
-        left: 0;
-    }
-    
     nav ul {
         flex-direction: column;
         align-items: center;
         gap: 20px;
     }
-    
+
     .mobile-menu-btn {
         display: block;
     }
-    
+
     .logo {
-        height: 80px;
-        width: 40px;
+        height: 60px;
+        width: 90px;
     }
 }
 
-/* Hero Section */
+/* Hero */
 .hero {
     position: relative;
     height: 100vh;
@@ -301,9 +229,8 @@ nav {
     color: var(--white);
     text-align: center;
     padding-top: 80px;
-    /* Efecto diagonal */
     clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
-    margin-bottom: -5%; /* Compensa el espacio del clip-path */
+    margin-bottom: -5%;
 }
 
 .hero-overlay {
@@ -336,19 +263,7 @@ nav {
     text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
 }
 
-.hero-buttons {
-    display: flex;
-    gap: 20px;
-    justify-content: center;
-    flex-wrap: wrap;
-}
-
-/* Productos - Flip Card */
-.product-section {
-    padding: 100px 0;
-    background-color: var(--white);
-}
-
+/* Productos Flip */
 .product-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -396,373 +311,35 @@ nav {
     align-items: center;
 }
 
-/* Efecto hover para desktop */
+/* Hover efecto Desktop */
 @media (min-width: 769px) {
     .producto:hover .producto-inner {
         transform: rotateY(180deg);
     }
 }
 
-/* Efecto click para móvil */
+/* Efecto Click Móvil */
 @media (max-width: 768px) {
     .producto.active .producto-inner {
         transform: rotateY(180deg);
     }
 }
 
-/* Estilos para el contenido de las cards */
-.producto-img-container {
-    height: 220px;
-    overflow: hidden;
-}
-
+/* Otros ajustes */
 .producto-img-container img {
     width: 100%;
-    height: 100%;
+    height: 220px;
     object-fit: cover;
-    transition: var(--transition);
 }
 
-.producto-content {
-    padding: 20px;
-    flex-grow: 1;
-}
-
-.producto-content h3 {
-    color: var(--primary-color);
-    margin-bottom: 15px;
-    font-size: 1.4rem;
-}
-
-.product-features {
+.hero-buttons {
     display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
-    margin-top: 15px;
-}
-
-.product-features span {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    font-size: 0.85rem;
-    background-color: rgba(43, 43, 43, 0.05);
-    padding: 5px 10px;
-    border-radius: 20px;
-}
-
-.product-features i {
-    color: var(--accent-color);
-}
-
-.producto-descripcion {
-    width: 100%;
-}
-
-.producto-descripcion p {
-    margin-bottom: 20px;
-    font-size: 1rem;
-}
-
-.descripcion-list {
-    list-style: none;
-    margin-top: 20px;
-}
-
-.descripcion-list li {
-    margin-bottom: 12px;
-    display: flex;
-    align-items: center;
-    font-size: 0.95rem;
-}
-
-.descripcion-list i {
-    margin-right: 8px;
-    color: var(--accent-color);
-    font-size: 0.9rem;
-}
-
-/* Resto de las secciones (About, Quote, Footer) se mantienen igual */
-/* ... */
-/* About Section */
-.about-section {
-    padding: 100px 0;
-    background-color: var(--light-color);
-}
-
-.about-container {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 50px;
-    align-items: center;
-}
-
-.about-content h2 {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-}
-
-.about-subtitle {
-    font-size: 1.1rem;
-    color: var(--accent-color);
-    font-weight: 600;
-    margin-bottom: 2rem;
-    position: relative;
-    display: inline-block;
-    padding-left: 20px;
-}
-
-.about-subtitle::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 10px;
-    height: 10px;
-    background-color: var(--accent-color);
-    border-radius: 50%;
-}
-
-.about-features {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
     gap: 20px;
-    margin-top: 30px;
-}
-
-.feature-item {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    background-color: var(--white);
-    padding: 15px;
-    border-radius: 5px;
-    box-shadow: var(--shadow);
-    transition: var(--transition);
-}
-
-.feature-item:hover {
-    transform: translateY(-5px);
-}
-
-.feature-item i {
-    font-size: 1.5rem;
-    color: var(--accent-color);
-}
-
-.about-image {
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: var(--shadow);
-}
-
-.about-image img {
-    width: 100%;
-    height: auto;
-    transition: var(--transition);
-}
-
-.about-image:hover img {
-    transform: scale(1.03);
-}
-
-/* Quote Section */
-.quote-section {
-    padding: 100px 0;
-    background: linear-gradient(rgba(43, 43, 43, 0.9), rgba(43, 43, 43, 0.9)), url('imagenes/pattern.png');
-    background-size: cover;
-    color: var(--white);
-}
-
-.quote-container {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 50px;
-}
-
-.quote-form {
-    background-color: var(--white);
-    padding: 40px;
-    border-radius: 10px;
-    box-shadow: var(--shadow);
-}
-
-.quote-form h2 {
-    color: var(--primary-color);
-    margin-bottom: 10px;
-}
-
-.quote-form p {
-    color: var(--text-light);
-    margin-bottom: 30px;
-}
-
-.form-group {
-    margin-bottom: 20px;
-}
-
-.form-group input,
-.form-group textarea {
-    width: 100%;
-    padding: 15px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    font-family: 'Poppins', sans-serif;
-    transition: var(--transition);
-}
-
-.form-group input:focus,
-.form-group textarea:focus {
-    outline: none;
-    border-color: var(--accent-color);
-    box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.2);
-}
-
-.form-group textarea {
-    resize: vertical;
-    min-height: 120px;
-}
-
-.quote-info {
-    padding: 20px 0;
-}
-
-.quote-info h3 {
-    font-size: 1.8rem;
-    margin-bottom: 30px;
-    position: relative;
-    padding-bottom: 15px;
-}
-
-.quote-info h3::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 60px;
-    height: 3px;
-    background-color: var(--accent-color);
-}
-
-.contact-method {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    margin-bottom: 25px;
-}
-
-.contact-method i {
-    font-size: 1.5rem;
-    color: var(--accent-color);
-    width: 50px;
-    height: 50px;
-    background-color: rgba(212, 175, 55, 0.1);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
     justify-content: center;
+    flex-wrap: wrap;
 }
 
-.contact-method a {
-    color: var(--white);
-    transition: var(--transition);
-}
-
-.contact-method a:hover {
-    color: var(--accent-color);
-}
-
-/* Footer */
-footer {
-    background-color: var(--primary-color);
-    color: var(--white);
-    padding: 80px 0 0;
-}
-
-.footer-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 40px;
-    margin-bottom: 60px;
-}
-
-.footer-column h3 {
-    font-size: 1.5rem;
-    margin-bottom: 25px;
-    position: relative;
-    padding-bottom: 10px;
-}
-
-.footer-column h3::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 40px;
-    height: 2px;
-    background-color: var(--accent-color);
-}
-
-.footer-column p {
-    color: rgba(255, 255, 255, 0.7);
-    margin-bottom: 20px;
-}
-
-.footer-column ul li {
-    margin-bottom: 15px;
-}
-
-.footer-column ul li a {
-    color: rgba(255, 255, 255, 0.7);
-    transition: var(--transition);
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.footer-column ul li a:hover {
-    color: var(--accent-color);
-    padding-left: 5px;
-}
-
-.footer-column ul li i {
-    width: 20px;
-    text-align: center;
-}
-
-.social-links {
-    display: flex;
-    gap: 15px;
-    margin-top: 20px;
-}
-
-.social-links a {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 40px;
-    height: 40px;
-    background-color: rgba(255, 255, 255, 0.1);
-    border-radius: 50%;
-    transition: var(--transition);
-}
-
-.social-links a:hover {
-    background-color: var(--accent-color);
-    color: var(--primary-color);
-    transform: translateY(-3px);
-}
-
-.footer-bottom {
-    text-align: center;
-    padding: 20px 0;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    color: rgba(255, 255, 255, 0.5);
-    font-size: 0.9rem;
-}
-
-/* WhatsApp Button */
+/* WhatsApp */
 .whatsapp {
     position: fixed;
     bottom: 30px;
@@ -787,76 +364,8 @@ footer {
     box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
 }
 
-.whatsapp span {
-    display: none;
-}
-
 @keyframes pulse {
-    0% {
-        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
-    }
-    70% {
-        box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
-    }
-    100% {
-        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
-    }
-}
-
-/* Responsive */
-@media (max-width: 992px) {
-    .product-grid {
-        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    }
-}
-
-@media (max-width: 768px) {
-    .producto {
-        height: 380px;
-    }
-    
-    nav ul {
-        position: fixed;
-        top: 80px;
-        left: -100%;
-        width: 100%;
-        height: calc(100vh - 80px);
-        background-color: var(--primary-color);
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        gap: 30px;
-        transition: var(--transition);
-        z-index: 999;
-    }
-    
-    nav ul.active {
-        left: 0;
-    }
-    
-    .mobile-menu-btn {
-        display: block;
-    }
-    
-    .hero h1 {
-        font-size: 2.5rem;
-    }
-}
-
-@media (max-width: 576px) {
-    .section-header h2 {
-        font-size: 2rem;
-    }
-    
-    .hero h1 {
-        font-size: 2rem;
-    }
-    
-    .hero-text {
-        font-size: 1rem;
-    }
-    
-    .producto {
-        height: 350px;
-    }
+    0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+    70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
 }
