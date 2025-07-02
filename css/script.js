@@ -1,36 +1,39 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
+    
+    // MENÚ HAMBURGUESA
     const menuBtn = document.querySelector('.mobile-menu-btn');
     const nav = document.querySelector('nav');
     const navLinks = document.querySelectorAll('nav ul li a');
-    const productos = document.querySelectorAll('.producto');
-    const form = document.querySelector(".quote-form form");
-    const formStatus = document.getElementById("form-status");
 
-    // Menú hamburguesa
-    if (menuBtn) {
-        menuBtn.addEventListener('click', function() {
-            nav.classList.toggle('active');
-            const icon = this.querySelector('i');
-            icon.classList.toggle('fa-times');
-            icon.classList.toggle('fa-bars');
-        });
-    }
+    menuBtn.addEventListener('click', function () {
+        nav.classList.toggle('active');
+        const icon = this.querySelector('i');
+        icon.classList.toggle('fa-bars');
+        icon.classList.toggle('fa-times');
+    });
 
-    // Cerrar menú al hacer clic en un enlace (solo en móvil)
     navLinks.forEach(link => {
-        link.addEventListener('click', function() {
-            if (window.innerWidth <= 768) {
-                nav.classList.remove('active');
-                const icon = menuBtn.querySelector('i');
-                icon.classList.add('fa-bars');
-                icon.classList.remove('fa-times');
-            }
+        link.addEventListener('click', function () {
+            nav.classList.remove('active');
+            const icon = menuBtn.querySelector('i');
+            icon.classList.add('fa-bars');
+            icon.classList.remove('fa-times');
         });
     });
 
-    // Smooth scrolling
+    // HEADER SCROLL EFECTO
+    window.addEventListener('scroll', function () {
+        const header = document.querySelector('header');
+        if (window.scrollY > 50) {
+            header.classList.add('header-scrolled');
+        } else {
+            header.classList.remove('header-scrolled');
+        }
+    });
+
+    // SMOOTH SCROLL
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
+        anchor.addEventListener('click', function (e) {
             e.preventDefault();
             const targetId = this.getAttribute('href');
             if (targetId === '#') return;
@@ -44,10 +47,12 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Tarjetas en móvil
+    // FLIP CARDS EN MÓVIL
+    const productos = document.querySelectorAll('.producto');
+
     productos.forEach(producto => {
-        producto.addEventListener('click', function(e) {
-            if (window.innerWidth > 768) return;
+        producto.addEventListener('click', function (e) {
+            if (window.innerWidth > 768) return; // Solo en móvil
             if (e.target.tagName === 'A' || e.target.closest('a')) return;
 
             productos.forEach(p => {
@@ -57,18 +62,20 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Cerrar tarjeta al hacer clic fuera
-    document.addEventListener('click', function(e) {
+    document.addEventListener('click', function (e) {
         if (window.innerWidth <= 768) {
-            if (!e.target.closest('.producto')) {
+            if (!e.target.closest('.producto') && !e.target.closest('nav') && !e.target.closest('.mobile-menu-btn')) {
                 productos.forEach(p => p.classList.remove('active'));
             }
         }
     });
 
-    // Envío del formulario
+    // FORMULARIO FORMSPREE
+    const form = document.querySelector(".quote-form form");
+    const formStatus = document.getElementById("form-status");
+
     if (form) {
-        form.addEventListener("submit", function(e) {
+        form.addEventListener("submit", function (e) {
             e.preventDefault();
             const formData = new FormData(form);
             formStatus.innerHTML = "Enviando tu solicitud...";
@@ -88,18 +95,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             })
             .catch(() => {
-                formStatus.innerHTML = "Hubo un problema al enviar tu solicitud.";
+                formStatus.innerHTML = "Hubo un problema al enviar tu solicitud. Inténtalo nuevamente.";
             });
         });
     }
-});
 
-// Efecto de scroll en header
-window.addEventListener('scroll', function() {
-    const header = document.querySelector('header');
-    if (window.scrollY > 50) {
-        header.classList.add('header-scrolled');
-    } else {
-        header.classList.remove('header-scrolled');
-    }
 });
