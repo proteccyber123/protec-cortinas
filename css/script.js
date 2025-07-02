@@ -5,21 +5,25 @@ document.addEventListener('DOMContentLoaded', function () {
     const nav = document.querySelector('nav');
     const navLinks = document.querySelectorAll('nav ul li a');
 
-    menuBtn.addEventListener('click', function () {
-        nav.classList.toggle('active');
-        const icon = this.querySelector('i');
-        icon.classList.toggle('fa-bars');
-        icon.classList.toggle('fa-times');
-    });
-
-    navLinks.forEach(link => {
-        link.addEventListener('click', function () {
-            nav.classList.remove('active');
-            const icon = menuBtn.querySelector('i');
-            icon.classList.add('fa-bars');
-            icon.classList.remove('fa-times');
+    if (menuBtn && nav) {
+        menuBtn.addEventListener('click', function () {
+            nav.classList.toggle('active');
+            const icon = this.querySelector('i');
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-times');
         });
-    });
+    }
+
+    if (navLinks.length && menuBtn) {
+        navLinks.forEach(link => {
+            link.addEventListener('click', function () {
+                nav.classList.remove('active');
+                const icon = menuBtn.querySelector('i');
+                icon.classList.add('fa-bars');
+                icon.classList.remove('fa-times');
+            });
+        });
+    }
 
     // HEADER SCROLL EFECTO
     window.addEventListener('scroll', function () {
@@ -34,13 +38,15 @@ document.addEventListener('DOMContentLoaded', function () {
     // SMOOTH SCROLL
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
-            e.preventDefault();
             const targetId = this.getAttribute('href');
-            if (targetId === '#') return;
-            const targetElement = document.querySelector(targetId);
-            if (targetElement) {
+            if (targetId.length > 1 && document.querySelector(targetId)) {
+                e.preventDefault();
+                const targetElement = document.querySelector(targetId);
+                const headerOffset = 80;
+                const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
+
                 window.scrollTo({
-                    top: targetElement.offsetTop - 80,
+                    top: elementPosition - headerOffset,
                     behavior: 'smooth'
                 });
             }
@@ -62,29 +68,42 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    // Cierra las cards si haces clic fuera
+    // Cierra las cards y el menú si haces clic fuera
     document.addEventListener('click', function (e) {
         if (window.innerWidth <= 768) {
-            if (!e.target.closest('.producto') && !e.target.closest('nav') && !e.target.closest('.mobile-menu-btn')) {
+            const isProducto = e.target.closest('.producto');
+            const isNav = e.target.closest('nav');
+            const isMenuBtn = e.target.closest('.mobile-menu-btn');
+
+            if (!isProducto && !isNav && !isMenuBtn) {
                 productos.forEach(p => p.classList.remove('active'));
+                nav.classList.remove('active');
+
+                if (menuBtn) {
+                    const icon = menuBtn.querySelector('i');
+                    icon.classList.add('fa-bars');
+                    icon.classList.remove('fa-times');
+                }
             }
         }
     });
 
     // Evitar que el menú se cierre si haces clic dentro
-    nav.addEventListener('click', function (e) {
-        e.stopPropagation();
-    });
+    if (nav) {
+        nav.addEventListener('click', function (e) {
+            e.stopPropagation();
+        });
+    }
 
     // FORMULARIO FORMSPREE
     const form = document.querySelector(".quote-form form");
     const formStatus = document.getElementById("form-status");
 
-    if (form) {
+    if (form && formStatus) {
         form.addEventListener("submit", function (e) {
             e.preventDefault();
             const formData = new FormData(form);
-            formStatus.innerHTML = "Enviando tu solicitud...";
+            formStatus.textContent = "Enviando tu solicitud...";
             formStatus.style.display = "block";
 
             fetch(form.action, {
@@ -92,17 +111,17 @@ document.addEventListener('DOMContentLoaded', function () {
                 body: formData,
                 headers: { 'Accept': 'application/json' }
             })
-                .then(response => {
-                    if (response.ok) {
-                        formStatus.innerHTML = "¡Gracias! Hemos recibido tu solicitud.";
-                        form.reset();
-                    } else {
-                        throw new Error('Error en el envío');
-                    }
-                })
-                .catch(() => {
-                    formStatus.innerHTML = "Hubo un problema al enviar tu solicitud. Inténtalo nuevamente.";
-                });
+            .then(response => {
+                if (response.ok) {
+                    formStatus.textContent = "¡Gracias! Hemos recibido tu solicitud.";
+                    form.reset();
+                } else {
+                    throw new Error('Error en el envío');
+                }
+            })
+            .catch(() => {
+                formStatus.textContent = "Hubo un problema al enviar tu solicitud. Inténtalo nuevamente.";
+            });
         });
     }
 
