@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-    
+
     // MENÚ HAMBURGUESA
     const menuBtn = document.querySelector('.mobile-menu-btn');
     const nav = document.querySelector('nav');
@@ -62,12 +62,18 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
+    // Cierra las cards si haces clic fuera
     document.addEventListener('click', function (e) {
         if (window.innerWidth <= 768) {
             if (!e.target.closest('.producto') && !e.target.closest('nav') && !e.target.closest('.mobile-menu-btn')) {
                 productos.forEach(p => p.classList.remove('active'));
             }
         }
+    });
+
+    // Evitar que el menú se cierre si haces clic dentro
+    nav.addEventListener('click', function (e) {
+        e.stopPropagation();
     });
 
     // FORMULARIO FORMSPREE
@@ -86,17 +92,17 @@ document.addEventListener('DOMContentLoaded', function () {
                 body: formData,
                 headers: { 'Accept': 'application/json' }
             })
-            .then(response => {
-                if (response.ok) {
-                    formStatus.innerHTML = "¡Gracias! Hemos recibido tu solicitud.";
-                    form.reset();
-                } else {
-                    throw new Error('Error en el envío');
-                }
-            })
-            .catch(() => {
-                formStatus.innerHTML = "Hubo un problema al enviar tu solicitud. Inténtalo nuevamente.";
-            });
+                .then(response => {
+                    if (response.ok) {
+                        formStatus.innerHTML = "¡Gracias! Hemos recibido tu solicitud.";
+                        form.reset();
+                    } else {
+                        throw new Error('Error en el envío');
+                    }
+                })
+                .catch(() => {
+                    formStatus.innerHTML = "Hubo un problema al enviar tu solicitud. Inténtalo nuevamente.";
+                });
         });
     }
 
