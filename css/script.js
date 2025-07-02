@@ -1,23 +1,24 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Mobile menu toggle
-    const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-    const navMenu = document.querySelector('nav ul');
+    const menuBtn = document.querySelector('.mobile-menu-btn');
+    const nav = document.querySelector('nav');
+    const navLinks = document.querySelectorAll('nav ul li a');
     
-    mobileMenuBtn.addEventListener('click', function() {
-        navMenu.classList.toggle('active');
+    // Abrir/cerrar menú
+    menuBtn.addEventListener('click', function() {
+        nav.classList.toggle('active');
         this.querySelector('i').classList.toggle('fa-times');
         this.querySelector('i').classList.toggle('fa-bars');
     });
     
-    // Close mobile menu when clicking a link
-    const navLinks = document.querySelectorAll('nav ul li a');
+    // Cerrar menú al hacer clic en un enlace
     navLinks.forEach(link => {
         link.addEventListener('click', function() {
-            navMenu.classList.remove('active');
-            mobileMenuBtn.querySelector('i').classList.add('fa-bars');
-            mobileMenuBtn.querySelector('i').classList.remove('fa-times');
+            nav.classList.remove('active');
+            menuBtn.querySelector('i').classList.add('fa-bars');
+            menuBtn.querySelector('i').classList.remove('fa-times');
         });
     });
+});
     
     // Header scroll effect
     window.addEventListener('scroll', function() {
@@ -47,22 +48,39 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Flip cards for mobile (click)
+    document.addEventListener('DOMContentLoaded', function() {
     const productos = document.querySelectorAll('.producto');
     
-    productos.forEach(producto => {
-        producto.addEventListener('click', function(e) {
-            // Solo activar en móviles
-            if (window.innerWidth <= 768) {
-                // Cerrar otras tarjetas antes de abrir esta
-                productos.forEach(p => {
-                    if (p !== this) p.classList.remove('active');
-                });
-                
-                this.classList.toggle('active');
-            }
+    // Función para manejar el clic en móvil
+    function handleCardClick(e) {
+        if (window.innerWidth > 768) return; // Solo en móviles
+        
+        // Evitar que se active al hacer clic en enlaces internos
+        if (e.target.tagName === 'A' || e.target.closest('a')) return;
+        
+        // Cerrar otras cards
+        productos.forEach(p => {
+            if (p !== this) p.classList.remove('active');
         });
+        
+        // Alternar estado de la card clickeada
+        this.classList.toggle('active');
+    }
+    
+    // Agregar event listeners
+    productos.forEach(producto => {
+        producto.addEventListener('click', handleCardClick);
     });
+    
+    // Cerrar cards al hacer clic fuera
+    document.addEventListener('click', function(e) {
+        if (window.innerWidth <= 768) {
+            if (!e.target.closest('.producto')) {
+                productos.forEach(p => p.classList.remove('active'));
+            }
+        }
+    });
+});
 
     // Formspree Submission
 const form = document.querySelector(".quote-form form");
