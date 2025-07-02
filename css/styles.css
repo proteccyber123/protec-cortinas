@@ -218,10 +218,18 @@ nav ul li a:hover {
 }
 
 @media (max-width: 768px) {
-    .mobile-menu-btn {
-        display: block;
-        position: relative;
+    .producto {
+        perspective: none; /* Elimina la perspectiva en móvil si causa problemas */
     }
+    
+    .producto-inner {
+        transition: transform 0.4s ease;
+    }
+    
+    .producto.active .producto-inner {
+        transform: rotateY(180deg);
+    }
+}
     
     nav {
         position: fixed;
