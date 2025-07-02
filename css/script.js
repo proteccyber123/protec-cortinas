@@ -6,25 +6,29 @@ document.addEventListener('DOMContentLoaded', function() {
     const form = document.querySelector(".quote-form form");
     const formStatus = document.getElementById("form-status");
 
-    // Abrir/cerrar menú
-    menuBtn.addEventListener('click', function() {
-        nav.classList.toggle('active');
-        const icon = this.querySelector('i');
-        icon.classList.toggle('fa-times');
-        icon.classList.toggle('fa-bars');
-    });
+    // Menú hamburguesa
+    if (menuBtn) {
+        menuBtn.addEventListener('click', function() {
+            nav.classList.toggle('active');
+            const icon = this.querySelector('i');
+            icon.classList.toggle('fa-times');
+            icon.classList.toggle('fa-bars');
+        });
+    }
 
-    // Cerrar menú al hacer clic en un enlace
+    // Cerrar menú al hacer clic en un enlace (solo en móvil)
     navLinks.forEach(link => {
         link.addEventListener('click', function() {
-            nav.classList.remove('active');
-            const icon = menuBtn.querySelector('i');
-            icon.classList.add('fa-bars');
-            icon.classList.remove('fa-times');
+            if (window.innerWidth <= 768) {
+                nav.classList.remove('active');
+                const icon = menuBtn.querySelector('i');
+                icon.classList.add('fa-bars');
+                icon.classList.remove('fa-times');
+            }
         });
     });
 
-    // Smooth scrolling para anclas
+    // Smooth scrolling
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             e.preventDefault();
@@ -40,7 +44,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Tarjetas producto en móvil
+    // Tarjetas en móvil
     productos.forEach(producto => {
         producto.addEventListener('click', function(e) {
             if (window.innerWidth > 768) return;
@@ -53,7 +57,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Cerrar tarjeta al hacer click fuera en móviles
+    // Cerrar tarjeta al hacer clic fuera
     document.addEventListener('click', function(e) {
         if (window.innerWidth <= 768) {
             if (!e.target.closest('.producto')) {
@@ -62,7 +66,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Formspree submission
+    // Envío del formulario
     if (form) {
         form.addEventListener("submit", function(e) {
             e.preventDefault();
@@ -73,9 +77,7 @@ document.addEventListener('DOMContentLoaded', function() {
             fetch(form.action, {
                 method: "POST",
                 body: formData,
-                headers: {
-                    'Accept': 'application/json'
-                }
+                headers: { 'Accept': 'application/json' }
             })
             .then(response => {
                 if (response.ok) {
@@ -86,13 +88,13 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             })
             .catch(() => {
-                formStatus.innerHTML = "Hubo un problema al enviar tu solicitud. Inténtalo nuevamente.";
+                formStatus.innerHTML = "Hubo un problema al enviar tu solicitud.";
             });
         });
     }
 });
 
-// Efecto scroll en header
+// Efecto de scroll en header
 window.addEventListener('scroll', function() {
     const header = document.querySelector('header');
     if (window.scrollY > 50) {
