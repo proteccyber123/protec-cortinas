@@ -1,29 +1,44 @@
 document.addEventListener('DOMContentLoaded', function () {
 
-    // MENÚ HAMBURGUESA
-    const menuBtn = document.querySelector('.mobile-menu-btn');
-    const nav = document.querySelector('nav');
-    const navLinks = document.querySelectorAll('nav ul li a');
+   // MENÚ HAMBURGUESA MEJORADO
+const menuBtn = document.querySelector('.mobile-menu-btn');
+const nav = document.querySelector('nav');
+const navLinks = document.querySelectorAll('nav ul li a');
 
-    if (menuBtn && nav) {
-        menuBtn.addEventListener('click', function () {
-            nav.classList.toggle('active');
-            const icon = this.querySelector('i');
-            icon.classList.toggle('fa-bars');
-            icon.classList.toggle('fa-times');
-        });
-    }
+if (menuBtn && nav) {
+    menuBtn.addEventListener('click', function(e) {
+        e.stopPropagation(); // Evita que el evento se propague
+        nav.classList.toggle('active');
+        this.classList.toggle('active'); // Para estilos adicionales
+        const icon = this.querySelector('i');
+        icon.classList.toggle('fa-bars');
+        icon.classList.toggle('fa-times');
+    });
+}
 
-    if (navLinks.length && menuBtn) {
-        navLinks.forEach(link => {
-            link.addEventListener('click', function () {
-                nav.classList.remove('active');
-                const icon = menuBtn.querySelector('i');
-                icon.classList.add('fa-bars');
-                icon.classList.remove('fa-times');
-            });
-        });
+// Cerrar menú al hacer clic en enlaces
+navLinks.forEach(link => {
+    link.addEventListener('click', function() {
+        nav.classList.remove('active');
+        menuBtn.classList.remove('active');
+        const icon = menuBtn.querySelector('i');
+        icon.classList.add('fa-bars');
+        icon.classList.remove('fa-times');
+    });
+});
+
+// Cerrar menú al hacer clic fuera
+document.addEventListener('click', function(e) {
+    if (!nav.contains(e.target) && !menuBtn.contains(e.target)) {
+        nav.classList.remove('active');
+        menuBtn.classList.remove('active');
+        const icon = menuBtn.querySelector('i');
+        icon.classList.add('fa-bars');
+        icon.classList.remove('fa-times');
     }
+});
+
+// El resto de tu código JavaScript puede permanecer igual...
 
     // HEADER SCROLL EFECTO
     window.addEventListener('scroll', function () {
