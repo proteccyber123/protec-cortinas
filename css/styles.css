@@ -201,8 +201,24 @@ nav ul li a:hover {
     transition: var(--transition);
 }
 
-/* Estilos para móvil */
+/* Estilos mejorados para el menú móvil */
 @media (max-width: 768px) {
+    .mobile-menu-btn {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        z-index: 1003;
+        background-color: var(--primary-color);
+        border: 2px solid var(--accent-color);
+        border-radius: 50%;
+        width: 48px;
+        height: 48px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: var(--transition);
+    }
+
     nav {
         position: fixed;
         top: 0;
@@ -210,13 +226,9 @@ nav ul li a:hover {
         width: 100%;
         height: 100vh;
         background-color: var(--primary-color);
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        gap: 30px;
-        transition: var(--transition);
+        padding-top: 80px;
         z-index: 1001;
-        padding-top: 80px; /* Espacio para el botón */
+        transition: var(--transition);
     }
 
     nav.active {
@@ -224,19 +236,14 @@ nav ul li a:hover {
         z-index: 1002;
     }
 
-    nav ul {
-        flex-direction: column;
-        align-items: center;
-        gap: 25px;
-        width: 100%;
-    }
-
+    /* Mejora visual para los enlaces */
     nav ul li a {
-        font-size: 1.2rem;
-        padding: 10px 20px;
+        font-size: 1.5rem;
+        padding: 15px;
         display: block;
         text-align: center;
     }
+}
 
     .mobile-menu-btn {
         display: flex;
