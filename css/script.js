@@ -1,47 +1,26 @@
-document.addEventListener('DOMContentLoaded', function () {
-
-   // MENÚ HAMBURGUESA MEJORADO
-const menuBtn = document.querySelector('.mobile-menu-btn');
-const nav = document.querySelector('nav');
-const navLinks = document.querySelectorAll('nav ul li a');
-
-if (menuBtn && nav) {
-    menuBtn.addEventListener('click', function(e) {
-        e.stopPropagation(); // Evita que el evento se propague
-        nav.classList.toggle('active');
-        this.classList.toggle('active'); // Para estilos adicionales
-        const icon = this.querySelector('i');
-        icon.classList.toggle('fa-bars');
-        icon.classList.toggle('fa-times');
+document.addEventListener('DOMContentLoaded', function() {
+    // Mobile menu toggle
+    const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+    const navMenu = document.querySelector('nav ul');
+    
+    mobileMenuBtn.addEventListener('click', function() {
+        navMenu.classList.toggle('active');
+        this.querySelector('i').classList.toggle('fa-times');
+        this.querySelector('i').classList.toggle('fa-bars');
     });
-}
-
-// Cerrar menú al hacer clic en enlaces
-navLinks.forEach(link => {
-    link.addEventListener('click', function() {
-        nav.classList.remove('active');
-        menuBtn.classList.remove('active');
-        const icon = menuBtn.querySelector('i');
-        icon.classList.add('fa-bars');
-        icon.classList.remove('fa-times');
+    
+    // Close mobile menu when clicking a link
+    const navLinks = document.querySelectorAll('nav ul li a');
+    navLinks.forEach(link => {
+        link.addEventListener('click', function() {
+            navMenu.classList.remove('active');
+            mobileMenuBtn.querySelector('i').classList.add('fa-bars');
+            mobileMenuBtn.querySelector('i').classList.remove('fa-times');
+        });
     });
-});
-
-// Cerrar menú al hacer clic fuera
-document.addEventListener('click', function(e) {
-    if (!nav.contains(e.target) && !menuBtn.contains(e.target)) {
-        nav.classList.remove('active');
-        menuBtn.classList.remove('active');
-        const icon = menuBtn.querySelector('i');
-        icon.classList.add('fa-bars');
-        icon.classList.remove('fa-times');
-    }
-});
-
-// El resto de tu código JavaScript puede permanecer igual...
-
-    // HEADER SCROLL EFECTO
-    window.addEventListener('scroll', function () {
+    
+    // Header scroll effect
+    window.addEventListener('scroll', function() {
         const header = document.querySelector('header');
         if (window.scrollY > 50) {
             header.classList.add('header-scrolled');
@@ -49,95 +28,80 @@ document.addEventListener('click', function(e) {
             header.classList.remove('header-scrolled');
         }
     });
-
-    // SMOOTH SCROLL
+    
+    // Smooth scrolling for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            
             const targetId = this.getAttribute('href');
-            if (targetId.length > 1 && document.querySelector(targetId)) {
-                e.preventDefault();
-                const targetElement = document.querySelector(targetId);
-                const headerOffset = 80;
-                const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
-
+            if (targetId === '#') return;
+            
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
                 window.scrollTo({
-                    top: elementPosition - headerOffset,
+                    top: targetElement.offsetTop - 80,
                     behavior: 'smooth'
                 });
             }
         });
     });
-
-    // FLIP CARDS EN MÓVIL
+    
+    // Flip cards for mobile (click)
     const productos = document.querySelectorAll('.producto');
-
+    
     productos.forEach(producto => {
-        producto.addEventListener('click', function (e) {
-            if (window.innerWidth > 768) return; // Solo en móvil
-            if (e.target.tagName === 'A' || e.target.closest('a')) return;
-
-            productos.forEach(p => {
-                if (p !== this) p.classList.remove('active');
-            });
-            this.classList.toggle('active');
+        producto.addEventListener('click', function(e) {
+            // Solo activar en móviles
+            if (window.innerWidth <= 768) {
+                // Cerrar otras tarjetas antes de abrir esta
+                productos.forEach(p => {
+                    if (p !== this) p.classList.remove('active');
+                });
+                
+                this.classList.toggle('active');
+            }
         });
     });
 
-    // Cierra las cards y el menú si haces clic fuera
-    document.addEventListener('click', function (e) {
+    // Formspree Submission
+const form = document.querySelector(".quote-form form");
+const formStatus = document.getElementById("form-status");
+
+form.addEventListener("submit", function(e) {
+    e.preventDefault();
+    const formData = new FormData(form);
+    
+    // Mostrar mensaje de enviando
+    formStatus.innerHTML = "Enviando tu solicitud...";
+    formStatus.style.display = "block";
+    
+    fetch(form.action, {
+        method: "POST",
+        body: formData,
+        headers: {
+            'Accept': 'application/json'
+        }
+    })
+    .then(response => {
+        if (response.ok) {
+            formStatus.innerHTML = "¡Gracias! Hemos recibido tu solicitud. Nos pondremos en contacto contigo pronto.";
+            form.reset();
+        } else {
+            throw new Error('Error en el envío');
+        }
+    })
+    .catch(error => {
+        formStatus.innerHTML = "Hubo un problema al enviar tu solicitud. Por favor inténtalo nuevamente o contáctanos directamente.";
+    });
+});
+    
+    // Cerrar tarjeta al hacer click fuera en móviles
+    document.addEventListener('click', function(e) {
         if (window.innerWidth <= 768) {
-            const isProducto = e.target.closest('.producto');
-            const isNav = e.target.closest('nav');
-            const isMenuBtn = e.target.closest('.mobile-menu-btn');
-
-            if (!isProducto && !isNav && !isMenuBtn) {
+            if (!e.target.closest('.producto')) {
                 productos.forEach(p => p.classList.remove('active'));
-                nav.classList.remove('active');
-
-                if (menuBtn) {
-                    const icon = menuBtn.querySelector('i');
-                    icon.classList.add('fa-bars');
-                    icon.classList.remove('fa-times');
-                }
             }
         }
     });
-
-    // Evitar que el menú se cierre si haces clic dentro
-    if (nav) {
-        nav.addEventListener('click', function (e) {
-            e.stopPropagation();
-        });
-    }
-
-    // FORMULARIO FORMSPREE
-    const form = document.querySelector(".quote-form form");
-    const formStatus = document.getElementById("form-status");
-
-    if (form && formStatus) {
-        form.addEventListener("submit", function (e) {
-            e.preventDefault();
-            const formData = new FormData(form);
-            formStatus.textContent = "Enviando tu solicitud...";
-            formStatus.style.display = "block";
-
-            fetch(form.action, {
-                method: "POST",
-                body: formData,
-                headers: { 'Accept': 'application/json' }
-            })
-            .then(response => {
-                if (response.ok) {
-                    formStatus.textContent = "¡Gracias! Hemos recibido tu solicitud.";
-                    form.reset();
-                } else {
-                    throw new Error('Error en el envío');
-                }
-            })
-            .catch(() => {
-                formStatus.textContent = "Hubo un problema al enviar tu solicitud. Inténtalo nuevamente.";
-            });
-        });
-    }
-
 });
