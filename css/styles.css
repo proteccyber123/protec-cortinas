@@ -178,7 +178,12 @@ nav ul li a:hover {
     font-size: 1.8rem;
     cursor: pointer;
     padding: 10px;
-    z-index: 1001;
+    z-index: 1003;
+}
+/* Asegura que el icono esté centrado */
+.mobile-menu-btn i {
+    font-size: 1.5rem;
+    color: var(--white);
 }
 
 /* Responsive - Móvil */
