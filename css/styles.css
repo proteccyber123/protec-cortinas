@@ -301,7 +301,7 @@ nav ul li a:hover {
     }
 }
 
-/* About Section */
+/* About Section - Estilos para Desktop y Mobile */
 .about-section {
     padding: 100px 0;
     background-color: var(--white);
@@ -324,6 +324,11 @@ nav ul li a:hover {
     width: 100%;
     height: auto;
     display: block;
+    transition: var(--transition);
+}
+
+.about-image img:hover {
+    transform: scale(1.03);
 }
 
 .about-content h2 {
@@ -343,6 +348,7 @@ nav ul li a:hover {
 .about-content p {
     margin-bottom: 20px;
     color: var(--text-light);
+    line-height: 1.8;
 }
 
 .about-features {
@@ -354,29 +360,37 @@ nav ul li a:hover {
 
 .feature-item {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     gap: 15px;
     background: rgba(212, 175, 55, 0.1);
-    padding: 15px;
+    padding: 20px;
     border-radius: 8px;
+    transition: var(--transition);
+}
+
+.feature-item:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow);
 }
 
 .feature-item i {
     font-size: 1.5rem;
     color: var(--accent-color);
+    margin-top: 3px;
 }
 
-.feature-item h4 {
+.feature-text h4 {
     margin-bottom: 5px;
     font-size: 1.1rem;
+    color: var(--primary-color);
 }
 
-.feature-item p {
+.feature-text p {
     margin-bottom: 0;
     font-size: 0.9rem;
 }
 
-/* Quote Section */
+/* Quote Section - Estilos para Desktop y Mobile */
 .quote-section {
     padding: 100px 0;
     background: linear-gradient(rgba(43, 43, 43, 0.9), rgba(43, 43, 43, 0.9)), url('imagenes/fondo2.jpg') no-repeat center center/cover;
@@ -387,6 +401,7 @@ nav ul li a:hover {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 50px;
+    align-items: center;
 }
 
 .quote-form {
@@ -407,6 +422,7 @@ nav ul li a:hover {
     text-align: center;
     margin-bottom: 30px;
     color: var(--text-light);
+    font-size: 1rem;
 }
 
 .form-group {
@@ -475,7 +491,7 @@ nav ul li a:hover {
 .contact-method {
     display: flex;
     align-items: center;
-    gap: 15px;
+    gap: 20px;
 }
 
 .contact-method i {
@@ -488,6 +504,13 @@ nav ul li a:hover {
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-shrink: 0;
+    transition: var(--transition);
+}
+
+.contact-method:hover i {
+    background: var(--accent-color);
+    color: var(--primary-color);
 }
 
 .contact-method h4 {
@@ -495,13 +518,99 @@ nav ul li a:hover {
     font-size: 1.2rem;
 }
 
+.contact-method p,
 .contact-method a {
-    color: var(--white);
+    color: rgba(255, 255, 255, 0.8);
     transition: var(--transition);
 }
 
 .contact-method a:hover {
     color: var(--accent-color);
+}
+
+/* Responsive Styles */
+@media (max-width: 992px) {
+    .about-container,
+    .quote-container {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+    
+    .about-image {
+        order: -1;
+        max-width: 600px;
+        margin: 0 auto;
+    }
+    
+    .about-features {
+        grid-template-columns: 1fr;
+    }
+    
+    .quote-info {
+        text-align: center;
+    }
+    
+    .contact-methods {
+        align-items: center;
+    }
+    
+    .contact-method {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+    }
+}
+
+@media (max-width: 768px) {
+    .about-section {
+        padding: 60px 0;
+    }
+    
+    .about-content h2 {
+        font-size: 2rem;
+        text-align: center;
+    }
+    
+    .about-subtitle {
+        text-align: center;
+    }
+    
+    .quote-section {
+        padding: 60px 0;
+    }
+    
+    .quote-form {
+        padding: 25px;
+    }
+    
+    .quote-form h2 {
+        font-size: 1.8rem;
+    }
+    
+    .quote-info h3 {
+        font-size: 1.8rem;
+        text-align: center;
+    }
+    
+    .quote-info h3::after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}
+
+@media (max-width: 576px) {
+    .about-content h2 {
+        font-size: 1.8rem;
+    }
+    
+    .feature-item {
+        padding: 15px;
+    }
+    
+    .quote-form h2,
+    .quote-info h3 {
+        font-size: 1.6rem;
+    }
 }
 
 /* WhatsApp */
