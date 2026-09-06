@@ -37,12 +37,6 @@
         rel="preload"
         as="image"
         href="imagenes/fondo1.webp"
-        imagesrcset="
-            imagenes/fondo1-768.webp 768w,
-            imagenes/fondo1-1200.webp 1200w,
-            imagenes/fondo1.webp 1600w
-        "
-        imagesizes="100vw"
         fetchpriority="high"
     >
 
@@ -130,6 +124,7 @@
 
     <!-- =====================================================
          FUENTES
+         CARGA NO BLOQUEANTE
     ====================================================== -->
 
     <link
@@ -144,25 +139,50 @@
     >
 
     <link
+        rel="preload"
         href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap"
-        rel="stylesheet"
+        as="style"
+        onload="this.onload=null;this.rel='stylesheet'"
     >
+
+    <noscript>
+
+        <link
+            href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap"
+            rel="stylesheet"
+        >
+
+    </noscript>
 
 
     <!-- =====================================================
          FONT AWESOME
+         CARGA NO BLOQUEANTE
     ====================================================== -->
 
     <link
-        rel="stylesheet"
+        rel="preload"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        as="style"
         crossorigin="anonymous"
         referrerpolicy="no-referrer"
+        onload="this.onload=null;this.rel='stylesheet'"
     >
+
+    <noscript>
+
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
+        >
+
+    </noscript>
 
 
     <!-- =====================================================
-         CSS
+         CSS PRINCIPAL
     ====================================================== -->
 
     <link
@@ -451,12 +471,6 @@
 
         <img
             src="imagenes/fondo1.webp"
-            srcset="
-                imagenes/fondo1-768.webp 768w,
-                imagenes/fondo1-1200.webp 1200w,
-                imagenes/fondo1.webp 1600w
-            "
-            sizes="100vw"
             alt="Cortina metálica de seguridad ProTec Cortinas"
             width="1600"
             height="1067"
@@ -746,12 +760,6 @@
 
                 <img
                     src="imagenes/alta-seguridad.webp"
-                    srcset="
-                        imagenes/alta-seguridad-480.webp 480w,
-                        imagenes/alta-seguridad-768.webp 768w,
-                        imagenes/alta-seguridad.webp 970w
-                    "
-                    sizes="(max-width: 900px) 100vw, 50vw"
                     alt="Cortina metálica de alta seguridad"
                     width="970"
                     height="596"
@@ -838,12 +846,6 @@
 
                     <img
                         src="imagenes/plana.webp"
-                        srcset="
-                            imagenes/plana-360.webp 360w,
-                            imagenes/plana-480.webp 480w,
-                            imagenes/plana.webp 612w
-                        "
-                        sizes="(max-width: 700px) 100vw, (max-width: 1100px) 50vw, 33vw"
                         alt="Cortina metálica plana para comercios"
                         width="612"
                         height="408"
@@ -891,12 +893,6 @@
 
                     <img
                         src="imagenes/microperforada.webp"
-                        srcset="
-                            imagenes/microperforada-320.webp 320w,
-                            imagenes/microperforada-480.webp 480w,
-                            imagenes/microperforada.webp 600w
-                        "
-                        sizes="(max-width: 700px) 100vw, (max-width: 1100px) 50vw, 33vw"
                         alt="Cortina metálica microperforada"
                         width="600"
                         height="830"
@@ -944,12 +940,6 @@
 
                     <img
                         src="imagenes/policarbonato.webp"
-                        srcset="
-                            imagenes/policarbonato-360.webp 360w,
-                            imagenes/policarbonato-600.webp 600w,
-                            imagenes/policarbonato.webp 800w
-                        "
-                        sizes="(max-width: 700px) 100vw, (max-width: 1100px) 50vw, 33vw"
                         alt="Cortina de policarbonato para espacios comerciales"
                         width="800"
                         height="600"
@@ -997,13 +987,6 @@
 
                     <img
                         src="imagenes/residencial.webp"
-                        srcset="
-                            imagenes/residencial-480.webp 480w,
-                            imagenes/residencial-800.webp 800w,
-                            imagenes/residencial-1200.webp 1200w,
-                            imagenes/residencial.webp 1600w
-                        "
-                        sizes="(max-width: 700px) 100vw, (max-width: 1100px) 50vw, 33vw"
                         alt="Cortina metálica residencial para cocheras y accesos"
                         width="1600"
                         height="1200"
@@ -1051,12 +1034,6 @@
 
                     <img
                         src="imagenes/industrial.webp"
-                        srcset="
-                            imagenes/industrial-360.webp 360w,
-                            imagenes/industrial-480.webp 480w,
-                            imagenes/industrial.webp 530w
-                        "
-                        sizes="(max-width: 700px) 100vw, (max-width: 1100px) 50vw, 33vw"
                         alt="Cortina metálica industrial para fábricas y almacenes"
                         width="530"
                         height="398"
@@ -1104,12 +1081,6 @@
 
                     <img
                         src="imagenes/troquelada.webp"
-                        srcset="
-                            imagenes/troquelada-360.webp 360w,
-                            imagenes/troquelada-480.webp 480w,
-                            imagenes/troquelada.webp 700w
-                        "
-                        sizes="(max-width: 700px) 100vw, (max-width: 1100px) 50vw, 33vw"
                         alt="Cortina metálica troquelada personalizada"
                         width="700"
                         height="507"
@@ -1157,12 +1128,6 @@
 
                     <img
                         src="imagenes/motores-seg.webp"
-                        srcset="
-                            imagenes/motores-seg-320.webp 320w,
-                            imagenes/motores-seg-400.webp 400w,
-                            imagenes/motores-seg.webp 500w
-                        "
-                        sizes="(max-width: 700px) 100vw, (max-width: 1100px) 50vw, 33vw"
                         alt="Motor automático para cortinas metálicas"
                         width="500"
                         height="298"
@@ -1274,13 +1239,6 @@
 
         <img
             src="imagenes/fondo2.webp"
-            srcset="
-                imagenes/fondo2-480.webp 480w,
-                imagenes/fondo2-768.webp 768w,
-                imagenes/fondo2-1200.webp 1200w,
-                imagenes/fondo2.webp 1400w
-            "
-            sizes="100vw"
             alt=""
             width="1400"
             height="1400"
@@ -1325,12 +1283,6 @@
 
             <img
                 src="imagenes/interior-protec.webp"
-                srcset="
-                    imagenes/interior-protec-768.webp 768w,
-                    imagenes/interior-protec-1200.webp 1200w,
-                    imagenes/interior-protec.webp 1536w
-                "
-                sizes="100vw"
                 alt="Interior de instalación de ProTec Cortinas"
                 width="1536"
                 height="1024"
@@ -1617,12 +1569,6 @@
 
         <img
             src="imagenes/1.webp"
-            srcset="
-                imagenes/1-768.webp 768w,
-                imagenes/1-1200.webp 1200w,
-                imagenes/1.webp 1536w
-            "
-            sizes="(max-width: 900px) 100vw, 50vw"
             alt="Instalación de cortina metálica ProTec Cortinas"
             width="1536"
             height="1024"
@@ -2075,12 +2021,6 @@
 
         <img
             src="imagenes/fondo1.webp"
-            srcset="
-                imagenes/fondo1-768.webp 768w,
-                imagenes/fondo1-1200.webp 1200w,
-                imagenes/fondo1.webp 1600w
-            "
-            sizes="100vw"
             alt=""
             width="1600"
             height="1067"
