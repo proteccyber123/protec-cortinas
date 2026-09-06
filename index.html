@@ -29,6 +29,7 @@
         href="https://www.proteccortinas.com/"
     >
 
+
     <!-- =====================================================
          IMAGEN LCP / HERO
     ====================================================== -->
@@ -124,6 +125,8 @@
 
     <!-- =====================================================
          FUENTES
+         
+         Carga no bloqueante para mejorar PageSpeed.
     ====================================================== -->
 
     <link
@@ -138,25 +141,43 @@
     >
 
     <link
+        rel="preload"
         href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap"
-        rel="stylesheet"
+        as="style"
+        onload="this.onload=null;this.rel='stylesheet'"
     >
+
+    <noscript>
+        <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap"
+        >
+    </noscript>
 
 
     <!-- =====================================================
          FONT AWESOME
+         
+         Carga no bloqueante para mejorar PageSpeed.
     ====================================================== -->
 
     <link
-        rel="stylesheet"
+        rel="preload"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
-        crossorigin="anonymous"
-        referrerpolicy="no-referrer"
+        as="style"
+        onload="this.onload=null;this.rel='stylesheet'"
     >
+
+    <noscript>
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        >
+    </noscript>
 
 
     <!-- =====================================================
-         CSS
+         CSS PRINCIPAL
     ====================================================== -->
 
     <link
