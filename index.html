@@ -29,11 +29,11 @@
         href="https://www.proteccortinas.com/"
     >
 
+
     <!-- =====================================================
-         PRELOAD RECURSOS PRINCIPALES
+         PRELOAD IMAGEN PRINCIPAL DEL HERO
     ====================================================== -->
 
-    <!-- Imagen principal del HERO -->
     <link
         rel="preload"
         as="image"
@@ -41,13 +41,10 @@
         fetchpriority="high"
     >
 
-    <!-- Logo del PRELOADER - elemento LCP detectado por PageSpeed -->
-    <link
-        rel="preload"
-        as="image"
-        href="imagenes/logo.webp"
-        fetchpriority="high"
-    >
+
+    <!-- =====================================================
+         FAVICON
+    ====================================================== -->
 
     <link
         rel="icon"
@@ -132,7 +129,8 @@
 
 
     <!-- =====================================================
-         FUENTES
+         GOOGLE FONTS
+         CARGA NO BLOQUEANTE
     ====================================================== -->
 
     <link
@@ -147,25 +145,62 @@
     >
 
     <link
+        rel="preload"
+        as="style"
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap"
+    >
+
+    <link
         href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap"
         rel="stylesheet"
+        media="print"
+        onload="this.media='all'"
     >
+
+    <noscript>
+
+        <link
+            href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap"
+            rel="stylesheet"
+        >
+
+    </noscript>
 
 
     <!-- =====================================================
          FONT AWESOME
+         CARGA NO BLOQUEANTE
     ====================================================== -->
+
+    <link
+        rel="preload"
+        as="style"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
 
     <link
         rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        media="print"
+        onload="this.onload=null;this.media='all'"
         crossorigin="anonymous"
         referrerpolicy="no-referrer"
     >
 
+    <noscript>
+
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
+        >
+
+    </noscript>
+
 
     <!-- =====================================================
-         CSS
+         CSS PRINCIPAL
     ====================================================== -->
 
     <link
@@ -273,7 +308,6 @@
                 alt="ProTec Cortinas"
                 width="400"
                 height="400"
-                fetchpriority="high"
             >
 
         </div>
@@ -1209,7 +1243,7 @@
 
 <!-- =========================================================
      ANIMACIÓN CINEMATOGRÁFICA DE SEGURIDAD
-     
+
      NO MODIFICAR ESTA ESTRUCTURA.
 ========================================================= -->
 
