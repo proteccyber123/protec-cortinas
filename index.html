@@ -30,13 +30,22 @@
     >
 
     <!-- =====================================================
-         PRELOAD IMAGEN PRINCIPAL DEL HERO
+         PRELOAD RECURSOS PRINCIPALES
     ====================================================== -->
 
+    <!-- Imagen principal del HERO -->
     <link
         rel="preload"
         as="image"
         href="imagenes/fondo1.webp"
+        fetchpriority="high"
+    >
+
+    <!-- Logo del PRELOADER - elemento LCP detectado por PageSpeed -->
+    <link
+        rel="preload"
+        as="image"
+        href="imagenes/logo.webp"
         fetchpriority="high"
     >
 
@@ -124,7 +133,6 @@
 
     <!-- =====================================================
          FUENTES
-         CARGA NO BLOQUEANTE
     ====================================================== -->
 
     <link
@@ -139,50 +147,25 @@
     >
 
     <link
-        rel="preload"
         href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap"
-        as="style"
-        onload="this.onload=null;this.rel='stylesheet'"
+        rel="stylesheet"
     >
-
-    <noscript>
-
-        <link
-            href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap"
-            rel="stylesheet"
-        >
-
-    </noscript>
 
 
     <!-- =====================================================
          FONT AWESOME
-         CARGA NO BLOQUEANTE
     ====================================================== -->
 
     <link
-        rel="preload"
+        rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
-        as="style"
         crossorigin="anonymous"
         referrerpolicy="no-referrer"
-        onload="this.onload=null;this.rel='stylesheet'"
     >
-
-    <noscript>
-
-        <link
-            rel="stylesheet"
-            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
-            crossorigin="anonymous"
-            referrerpolicy="no-referrer"
-        >
-
-    </noscript>
 
 
     <!-- =====================================================
-         CSS PRINCIPAL
+         CSS
     ====================================================== -->
 
     <link
@@ -290,6 +273,7 @@
                 alt="ProTec Cortinas"
                 width="400"
                 height="400"
+                fetchpriority="high"
             >
 
         </div>
